@@ -210,37 +210,37 @@
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 <script>
-/* --- FUNCIÓN DE CAMBIO DE IDIOMA --- */
+/* --- Hizkutza aldaketaren funtzioa --- */
 function changeLang(lang) {
-    // 1. Cambiar estado visual de los botones ES | EU
+    // 1. Bisualki aldatzea ES | EU
     document.getElementById('btn-es').classList.toggle('active', lang === 'es');
     document.getElementById('btn-eu').classList.toggle('active', lang === 'eu');
 
-    // 2. Buscar todos los elementos con la clase 'lang'
+    // 2. Lang klasearekin dauden elementu gustiak bilatu 'lang'
     const elements = document.querySelectorAll('.lang');
 
     elements.forEach(el => {
-        // Obtener el texto del atributo data-es o data-eu
+        // Data-es edo data-eu atributuaren testua eskuratu
         const translation = el.getAttribute(`data-${lang}`);
         
         if (translation) {
-            // Si es un input o textarea, cambiamos el placeholder
+            // Input edo testu bat bada, placeholderen aldatzea
             if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                 el.setAttribute('placeholder', translation);
             } else {
-                // Si es texto normal, cambiamos el contenido
+                // Bestela, testu arrunt baten kasuan, textContent aldatzea
                 el.textContent = translation;
             }
         }
     });
 }
 
-/* --- LÓGICA DE LOGIN --- */
+/* --- Logina --- */
 function checkLogin() {
     const user = document.getElementById('userInput').value;
     const pass = document.getElementById('passInput').value;
     
-    // Usuario: admin | Contraseña: 123
+    // Erabiltzailea: admin | Pasahitza: 123
     if(user === "admin" && pass === "123") {
         document.getElementById('private-zone').style.display = 'block';
         const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
@@ -251,7 +251,7 @@ function checkLogin() {
     }
 }
 
-/* --- CONFIGURACIÓN EMAILJS --- */
+/* --- EMAILJS CONFIGURAZIOA --- */
 (function(){ 
     emailjs.init("zvjwANct68TRmwWdx"); 
 })();
